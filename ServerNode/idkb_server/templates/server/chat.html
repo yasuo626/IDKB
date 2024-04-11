@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>chat</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="../static/server/chat.css">
+</head>
+<body>
+<div class="top_button" id="top_button"></div>
+
+<div class="main">
+    <div class="header" >
+    <div class="top_site_bar">
+        <div class="top_list_item">
+            <div class="top_list_item_element" id="home"   onclick="window.location.href='/idkb/'">home</div>
+        </div>
+        <div class="top_list_item">
+            <div class="top_list_item_element" id="kb" onclick="window.location.href='/idkb/kb'">knowledge base</div>
+        </div>
+        <div class="top_list_item">
+            <div class="top_list_item_element" id="file" onclick="window.location.href='/idkb/file'">file</div>
+        </div>
+        <div class="top_list_item">
+            <div class="top_list_item_element" id="chat">chat</div>
+        </div>
+        <div class="top_empty_item"></div>
+        <div class="search_bar">
+            <input class="search_input" id="search_input">
+            <div class="search_button" id="search_button"></div>
+        </div>
+        <div class="etc_button" id="etc_button" onclick="show_etc_menu()">
+        </div>
+    </div>
+
+    </div>
+    <div class="separator"></div>
+    <div class="main-container" id="main_container">
+
+        <div class="row_flex">
+            <div class="chat_list" id="chat_list">
+            <ul id="chat_list_ul">
+                <div class="chat_list_add" onclick="chat_new()">+</div>
+            </ul>
+        </div>
+            <div class="column_flex" style="width: 75%" id="chat_block">
+                <div class="chat_settings">
+                    <div class="chat_settings_option" id="current_chatname" onclick="chat_detail()">chatname</div>
+                    <div class="chat_settings_option" onclick="chat_delete()">delete</div>
+                    <div class="chat_settings_option" style="margin-left: 10%">
+                        <label class="switch" title="开启使用知识库">
+                          <input type="checkbox" id="switch_kb_enable">
+                          <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="chat_block" id="main_block"></div>
+                <div class="client_box" id="client_box">
+                <textarea class="client_input" id="chat_input">shift+enter换行</textarea>
+                <div class="client_func">
+                    <button class="client_submit_but" id="chat_chat" onclick="chat_chat()"></button>
+                    <label class="client_func_text">send</label>
+                </div>
+                <div class="client_func">
+                    <button class="history_clear_but" id="chat_clear" onclick="chat_clear()"></button>
+                    <label class="client_func_text">clear</label>
+                </div>
+            </div>
+            </div>
+        </div>
+
+
+        <div class="absolute_container" id="absolute_container" style="display: none;">
+            <div class="menu" id="etc_menu" style="display: none">
+                <div class="menu_item"  onclick="logout()"><div class="menu_item_text">logout</div></div>
+            </div>
+
+            <div class="chat_new_form" id="chat_new_form" style="display: none">
+                <div class="chat_new_form_close"  onclick="chat_new_form_close()"></div>
+                <div class="chat_new_form_options" id="chat_new_form_options">
+                     <label for="chat_new_form_name">name:</label>
+                      <input id="chat_new_form_name" required>
+                     <label for="kb_select">kb:</label>
+                      <select id="kb_select"></select>
+                     <label for="chat_new_form_max_context">max_context:</label>
+                      <input type="number" id="chat_new_form_max_context" required>
+                     <label for="chat_new_form_system_template">system_template:</label>
+                      <input id="chat_new_form_system_template" required value="你是一个人工智能客服助手，帮助用户回答提出的问题，如果有提供参考知识请根据参考知识回答" title="任务系统设置提示词" >
+                     <label for="chat_new_form_question_template">question_template:</label>
+                      <input id="chat_new_form_question_template" required value="下面是问题和相关知识：" title="问题模板提示词">
+
+                    <div class="submit_button" onclick="chat_new_submit()">new</div>
+                    <div class="upload_response" ><div class="upload_loader" id="chat_new_loader" style="display: none;"></div> <p class="upload_response_msg" id="chat_new_response_msg"></p></div>
+                </div>
+            </div>
+
+        </div>
+
+
+
+    </div>
+    <div class="empty_block" style="padding: 1px"></div>
+    <div class="separator"></div>
+    <div class="footer"></div>
+
+    <div id="require_login" style="display: none">{{require_login}}</div>
+    <div id="is_login" style="display: none">{{is_login}}</div>
+    <div id="get_username" style="display: none">{{username}}</div>
+    <div id="api_url" style="display: none">{{apiurl}}</div>
+
+
+</div>
+
+
+
+<script src="../static/server/chat.js"></script>
+
+
+</body>
+</html>

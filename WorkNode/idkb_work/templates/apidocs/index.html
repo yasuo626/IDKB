@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>apidocs</title>
+</head>
+<body>
+
+<H1>idkb</H1>
+
+<H3>idkb.file_upload</H3>
+request.POST{
+    'username':"",
+    'api':choice:'test','aiproxy',
+    'embedding_model':'' :choice:text-embedding-ada-002
+    FILES:form.Files
+}
+response:
+{
+    'file_states':[{'name':'file1.txt','state':1,'error_info':"..."},..] # 1 mean upload fail
+    'state':0 # 0 mean response success
+    'error_info':''
+}
+
+multi files upload form:
+<pre>
+<code>
+<!--<input type="file" id="fileInput" name="files" multiple>-->
+<!--<button type="button" onclick="uploadFiles()">Upload</button>-->
+
+<!--<script>-->
+<!--    function uploadFiles() {-->
+<!--        var files = document.getElementById('fileInput').files;-->
+<!--        var formData = new FormData();-->
+
+<!--        for (var i = 0; i < files.length; i++) {-->
+<!--            formData.append('files', files[i]);-->
+<!--        }-->
+
+<!--        // 发送 AJAX 请求将文件上传到服务器-->
+<!--        var xhr = new XMLHttpRequest();-->
+<!--        xhr.open('POST', 'http://127.0.0.1:8000//idkb/file_upload', true);-->
+<!--        formData.append('username', "user1");-->
+
+<!--        xhr.onload = function() {-->
+<!--            if (xhr.status === 200) {-->
+<!--                var jsonResponse = JSON.parse(xhr.responseText);-->
+<!--                // 在这里处理解析后的 JSON 数据-->
+<!--                console.log(jsonResponse); // 输出解析后的 JSON 数据到控制台-->
+<!--                // 可以将响应数据显示在页面上或者进行其他操作-->
+<!--            } else {-->
+<!--                // 请求失败-->
+<!--                console.error('Request failed with status:', xhr.status);-->
+<!--            }-->
+<!--        };-->
+
+<!--        xhr.send(formData);-->
+<!--    }-->
+<!--</script>-->
+</code>
+</pre>
+
+
+
+
+<H3>idkb.file_delete</H3>
+request.POST{
+    'username':"".
+    'files':['file1.txt',...]
+}
+response:
+{
+    'file_states':[{'name':'file1.txt','state':1,'error_info':"..."},..] # 1 mean delete fail
+    'state':0 (success)
+    'error_info':''
+}
+
+
+
+<H3>idkb.file_get</H3>
+request.POST{
+    'username':"",
+}
+response:
+{
+    files:[{'name':file.name,'type':file.type,'size':file.size,'api':file.api,'embedding_model':file.embedding_model,'create_time':file.ctime},...]
+    'state':0 # 0 mean response success
+    'error_info':''
+}
+
+<H3>idkb.file_get_detail</H3>
+request.POST{
+    'filename':"t.txt", ->
+    'username':"",
+}
+response:
+{
+    detail:{'name':file[0].name,'type':file[0].type,'size':file[0].size,'api':file[0].api,'embedding_model':file[0].embedding_model,
+                            'embeddings_size':file[0].embeddings_size,'count':file[0].count,'create_time':file[0].ctime,'update_time':file[0].utime}
+    'state':0 # 0 mean response success
+    'error_info':''
+}
+
+
+
+
+
+
+
+
+<H3>idkb.kb_get</H3>
+request.POST{
+    'username':"",
+}
+response:
+{
+    kb_list:[{'name':kb.name,api,llm,embedding_model},...]
+    'state':0 (success)
+    'error_info':''
+}
+
+<H3>idkb.kb_get_detail</H3>
+request.POST{
+    'kbname':"",
+    'username':"",
+}
+response:
+{
+    detail:{'name':kb[0].name,'api':kb[0].api,'llm':kb[0].llm,'embedding_model':kb[0].embedding_model,'reference':kb[0].reference,'create_time':kb[0].ctime,'update_time':kb[0].utime}
+    'state':0 (success)
+    'error_info':''
+}
+
+
+<H3>idkb.kb_create</H3>
+request.POST{
+    'username':"",
+    'kbname':"",
+    'api':"",
+    'embedding_model':"",
+    'llm':"",
+}
+response:
+{
+    'state':0 (success)
+    'error_info':''
+}
+
+<H3>idkb.kb_delete</H3>
+request.POST{
+    'username':"",
+    'kbname':"",
+}
+response:
+{
+    'state':0 (success)
+    'error_info':''
+}
+
+<H3>idkb.kb_add_files</H3>
+request.POST{
+    'username':"",
+    'kbname':"",
+    'files':['file1.txt',...]
+}
+response:
+{
+    'file_states':[{'name':'file1.txt','state':1,'error_info':"..."},..] # 1 mean add fail
+    'state':0 (success)
+    'error_info':''
+}
+
+<H3>idkb.kb_get_files</H3>
+<p>get the files in kb</p>
+request.POST{
+    'username':"",
+    'kbname':"",
+}
+response:
+{
+    'files':['file1.txt',..]
+    'state':0 (success)
+    'error_info':''
+}
+
+
+<H3>idkb.kb_get_valid_files</H3>
+<p>get the files which can be add to kb</p>
+request.POST{
+    'username':"",
+    'kbname':"",
+}
+response:
+{
+    'files':['file1.txt',..]
+    'state':0 (success)
+    'error_info':''
+}
+
+<H3>idkb.kb_drop_files</H3>
+request.POST{
+    'username':"",
+    'kbname':"",
+    'files':['file1.txt',...]
+}
+response:
+{
+    'file_states':[{'name':'file1.txt','state':1,'error_info':"..."},..] # 1 mean drop fail
+    'state':0 (success)
+    'error_info':''
+}
+<H3>idkb.chat.get</H3>
+request.POST{
+    'username':"",
+    'method':"",:get
+}
+response:
+{
+    'state':0 (success)
+    'chat_list':[chat1,chat2...]
+    'error_info':''
+}
+
+<H3>idkb.chat.create</H3>
+request.POST{
+    'username':"",
+    'method':"",:create
+    'chatname':"",
+    'max_context':int,
+    'system_template':"",
+    'question_template':"",
+    'kbname':""
+}
+response:
+{
+    'state':0 (success)
+    'error_info':''
+}
+
+<H3>idkb.chat.delete</H3>
+request.POST{
+    'username':"",
+    'method':"",:delete
+    'chatname':"",
+}
+response:
+{
+    'state':0 (success)
+    'error_info':''
+}
+
+<H3>idkb.chat.load</H3>
+request.POST{
+    'username':"",
+    'method':"load",
+    'chatname':"",
+}
+response:
+{
+    'history':[{'role':'','type':'','content':''},{'role':'','type':'','content':''}...]
+    'state':0 (success)
+    'error_info':''
+}
+
+
+<H3>idkb.chat.chat</H3>
+request.POST{
+    'username':"",
+    'method':"chat",
+    'kb_enable':1:enable,0:disable
+    'chatname':"",
+    'message':"",
+    'msgtype':"" in ['text','img','video','audio']
+}
+response:
+{
+    'reply':""
+    'state':0 (success)
+    'error_info':''
+}
+
+
+
+
+
+
+
+
+
+
+
+<H1>API-USER</H1>
+<H3>register</H3>
+request:
+    {
+        'method': 'register',
+        'username':'',
+        'password':'',
+        'email':''
+    }
+response:
+    {
+        'state': 0:注册成功，1：注册失败
+        'error_info':""
+    }
+
+<H3>login</H3>
+request:
+    {
+        method: 'login',
+        'username':'...@gmail.com',
+        'password':"..."
+    }
+response:
+    {
+        'state':0,1
+        'error_info':""
+    }
+
+<H3>logout</H3>
+request:
+    {
+        method: 'logout',
+    }
+response:
+    {
+        'state':0:查询成功,1：异常
+        'permission':int(-1-99) -99:用户不存在
+        'error_info':""
+    }
+
+
+<H3>password reset</H3>
+request:
+    {
+        method: 'reset',
+        'username':'...',
+        'password':'...',
+        'email':'...',
+        'code':'...'
+    }
+response:
+    {
+        'state':0:重置成功，1：重置失败
+        'error_info':""
+    }
+<H3>logoff</H3>
+request:
+    {
+        method: 'logoff',
+        'body':{'':'...','value':'...'}
+    }
+response:
+    {
+        'state':0:设置成功，1：设置失败
+        'error_info':""
+    }
+
+
+
+<H1>glm3_api</H1>
+<H3>embedding</H3>
+requests:
+{
+    'method':'embedding',
+    'apikey':'',
+    'texts':['text1','text2',...],
+    'model':'glm3_6b_text_embeddings',
+}
+response:
+{
+    'state':0,
+    'error_info':'',
+    'embeddings':['text1','text2',...],
+    'embeddings_size':4096,
+    'model':'glm3_6b_text_embeddings'
+    'prompt_tokens':6,
+    'total_tokens':6
+}
+
+<H3>chat</H3>
+requests:
+{
+    'method':'chat',
+    'apikey':'',
+    messages=[
+        {"role": "system","content": ""},
+        {"role": "user","content": ""},
+        {"role": "assistant","content": ""},
+        {"role": "user","content": ""},
+    ],
+    model="glm3_6b",
+    max_tokens=1000,
+    temperature=0.8,
+    top_p=0.8
+}
+response:
+{
+    'state':0,
+    'content':'',
+    'role':'assistant',
+    'model':'glm3_6b_embeddings',
+    'prompt_tokens':6,
+    'total_tokens':6,
+    'error_info':'',
+
+
+}
+
+
+
+
+<H1>wmc</H1>
+
+<H2>idkb</H2>
+requests:
+{
+    'method':'check',
+}
+response:
+{
+    'state':0, 0:activate,1:deactivate,2: maintenance
+    'error_info':''
+}
+
+
+requests:
+{
+    'method':'get_args',
+}
+response:
+{
+    'state':0,
+    'args':{
+        'key1':'value1',
+        ...
+    }
+    'error_info':''
+}
+
+requests:
+{
+    'method':'set_args',
+    'args':{
+        'key1':'value1',
+        ...
+    }
+}
+response:
+{
+    'state':0,
+    'error_info':''
+}
+
+requests:
+{
+    'method':'activate',
+}
+response:
+{
+    'state':0,
+    'error_info':''
+}
+
+requests:
+{
+    'method':'deactivate',
+}
+response:
+{
+    'state':0,
+    'error_info':''
+}
+
+requests:
+{
+    'method':'reboot',
+}
+response:
+{
+    'state':0,
+    'error_info':''
+}
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>wmc</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="../static/wmc/home.css">
+</head>
+<body>
+<div class="top_button" id="top_button"></div>
+
+<div class="main">
+    <div class="header" >
+    <div class="top_site_bar">
+        <div class="top_list_item">
+            <div class="top_list_item_element" id="chat" onclick="window.location.href='/idkb/'">idkb</div>
+        </div>
+        <div class="top_empty_item"></div>
+        <div class="search_bar">
+            <input class="search_input" id="search_input">
+            <div class="search_button" id="search_button"></div>
+        </div>
+        <div class="etc_button" id="etc_button" onclick="show_etc_menu()">
+        </div>
+        <div class="menu" id="etc_menu" style="display: none">
+            <div class="menu_item"  onclick="logout()"><div class="menu_item_text">logout</div></div>
+        </div>
+    </div>
+
+    </div>
+    <div class="separator"></div>
+    <div class="main-container" id="main_container">
+        <div class="Module_container" id="Module_idkb">
+            <div class="Module_base">
+                <div class="Module_name">
+                    IDKB
+                </div>
+
+                <div class="actions_item" style="margin-left: 5%">
+                    <input type="text" id="module_idkb_url" placeholder="module api url">
+                </div>
+                <div class="actions_item">
+                    <div class="actions_item_element" onclick="check_module_idkb()">check</div>
+                </div>
+
+                <div class="Module_state" id="Module_state_idkb" style="margin-left: 20%"></div>
+
+                <div class="actions_item">
+                    <div class="actions_item_element" onclick="activate_idkb()">activate</div>
+                </div>
+                <div class="actions_item">
+                    <div class="actions_item_element" onclick="deactivate_idkb()">deactivate</div>
+                </div>
+                <div class="actions_item">
+                    <div class="actions_item_element" onclick="reboot()">reboot</div>
+                </div>
+                <div class="actions_item">
+                    <div class="actions_item_element" onclick="update_args()">update</div>
+                </div>
+            </div>
+
+            <div class="Module_args" id="Module_idkb_args">
+
+        </div>
+
+    </div>
+    </div>
+    <div class="empty_block"></div>
+    <div class="separator"></div>
+    <div class="footer"></div>
+
+
+
+
+    <div class="fullscreen_shadow" id="fullscreen_shadow" style="display: none"></div>
+    <div class="absolute_container" id="absolute_container" style="display: none">
+        <div class="login_form" id="login_form">
+            <h2>Login</h2>
+            <input class="login_input" type="text" id="login_username" placeholder="Username" required>
+            <input class="login_input" type="password" id="login_password" placeholder="Password" required>
+            <button class="login_button" onclick="login()">Login</button>
+            <div class="login_response" ><div class="login_loader" id="login_loader"></div> <p class="login_response_msg" id="login_response_msg"></p></div>
+            <p class="forgot_password_link"><a href="#">Forgot Password?</a></p>
+        </div>
+        <div class="login_form" id="set_url_form" style="display: none;">
+            <h2>set url</h2>
+            <input class="login_input" type="text" placeholder="new url" id="set_url_form_url" required>
+            <button onclick="set_url_submit()" class="login_button">set</button>
+            <div class="login_response" ><div class="login_loader" id="set_url_loader"></div> <p class="login_response_msg" id="set_url_response_msg"></p></div>
+        </div>
+    </div >
+    <div id="require_login" style="display: none">{{require_login}}</div>
+    <div id="is_login" style="display: none">{{is_login}}</div>
+    <div id="get_username" style="display: none">{{username}}</div>
+
+</div>
+
+
+
+<script src="../static/wmc/home.js"></script>
+
+
+</body>
+</html>

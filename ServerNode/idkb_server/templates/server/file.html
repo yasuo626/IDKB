@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>file</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="../static/server/file.css">
+</head>
+<body>
+<div class="top_button" id="top_button"></div>
+
+<div class="main">
+    <div class="header" >
+    <div class="top_site_bar">
+        <div class="top_list_item">
+            <div class="top_list_item_element" id="home"  onclick="window.location.href='/idkb/'">home</div>
+        </div>
+        <div class="top_list_item">
+            <div class="top_list_item_element" id="kb" onclick="window.location.href='/idkb/kb'">knowledge base</div>
+        </div>
+        <div class="top_list_item">
+            <div class="top_list_item_element" id="file" >file</div>
+        </div>
+        <div class="top_list_item">
+            <div class="top_list_item_element" id="chat" onclick="window.location.href='/idkb/chat'">chat</div>
+        </div>
+        <div class="top_empty_item"></div>
+        <div class="search_bar">
+            <input class="search_input" id="search_input">
+            <div class="search_button" id="search_button"></div>
+        </div>
+        <div class="etc_button" id="etc_button" onclick="show_etc_menu()">
+        </div>
+
+    </div>
+
+    </div>
+    <div class="separator"></div>
+    <div class="main-container" id="main_container">
+
+        <div class="actions">
+            <div class="actions_item"><div class="actions_item_element" onclick="file_add()">add</div></div>
+            <div class="actions_item"><div class="actions_item_element" onclick="file_delete()">delete</div></div>
+        </div>
+        <ul class="file_list" id="file_list">
+            <div class="file_list_info"><span>name</span> <span>type</span> <span>size</span> <span>api</span> <span>model</span> <span>create time</span> </div>
+        </ul>
+
+        <div class="absolute_container" id="absolute_container" style="display: none;">
+
+            <div class="file_detail" id="file_detail" style="display: none;">
+            <div class="file_detail_close" id="file_detail_close" onclick="file_detail_close()"></div>
+            <h2>File Details</h2>
+            <ul>
+            <li><strong>Name:</strong> <span id="file_detail_name">FileName</span></li>
+            <li><strong>Type:</strong> <span id="file_detail_type">FileType</span></li>
+            <li><strong>Size:</strong> <span id="file_detail_size">FileSize</span></li>
+            <li><strong>api:</strong> <span id="file_detail_api">api</span></li>
+            <li><strong>embedding_model:</strong> <span id="file_detail_embedding_model">embedding_model</span></li>
+            <li><strong>embeddings_size:</strong> <span id="file_detail_embeddings_size">embedding_model</span></li>
+            <li><strong>count:</strong> <span id="file_detail_count">embedding_model</span></li>
+            <li><strong>create_time:</strong> <span id="file_detail_create_time">embedding_model</span></li>
+            <li><strong>update_time:</strong> <span id="file_detail_update_time">embedding_model</span></li>
+            </ul>
+            </div>
+
+            <div class="menu" id="etc_menu" style="display: none">
+                <div class="menu_item"  onclick="logout()"><div class="menu_item_text">logout</div></div>
+            </div>
+
+            <div class="file_upload_form" id="file_upload_form" style="display: none;">
+                <div class="file_detail_close"  onclick="file_upload_form_close()"></div>
+                <div class="file_upload_form_files" onclick="openFileUploader()">
+                    <div class="upload_icon">&#10133;</div>
+                    <p>Click to upload file</p>
+                    <input type="file" id="add_file_upload"  style="display: none;" multiple onchange="displaySelectedFiles()">
+                    <ul id="add_file_list"></ul>
+                </div>
+                <div class="file_upload_form_options" id="file_upload_form_options">
+
+                     <label for="api_select">API:</label>
+                      <select id="api_select">
+                        <option value="aiproxy">aiproxy</option>
+                        <option value="local">local</option>
+                        <option value="test">test</option>
+                      </select>
+
+                      <label for="embedding_model_select">Select Embedding Model:</label>
+                      <select id="embedding_model_select">
+                        <option value="test">[test] test-embedding-model</option>
+                        <option value="text-embedding-ada-002">[aiproxy] api-text-embedding-ada-002</option>
+                        <option value="glm3_6b_text_embeddings">[local] glm3-6b-text-embeddings</option>
+                      </select>
+                    <div class="submit_button" id="file_upload_submit_but" onclick="file_upload()">upload</div>
+                    <div class="upload_response" ><div class="upload_loader" id="upload_loader" style="display: none;"></div> <p class="upload_response_msg" id="upload_response_msg"></p></div>
+
+                </div>
+            </div>
+
+            <div class="file_delete_form" id="file_delete_form" style="display: none;">
+                <div class="file_delete_form_close" id="file_delete_form_close" onclick="file_delete_form_close()"></div>
+                <div class="file_delete_list" id="file_delete_list">
+                </div>
+                <div class="submit_button" onclick="file_delete_submit()">delete</div>
+                <div class="submit_button" onclick="file_delete_select_all()" id="file_delete_select_all">select all</div>
+            </div>
+
+
+        </div>
+    </div>
+
+
+    <div class="empty_block"></div>
+    <div class="separator"></div>
+    <div class="footer"></div>
+
+
+    <div id="require_login" style="display: none">{{require_login}}</div>
+    <div id="is_login" style="display: none">{{is_login}}</div>
+    <div id="get_username" style="display: none">{{username}}</div>
+    <div id="api_url" style="display: none">{{apiurl}}</div>
+
+</div>
+
+
+
+<script src="../static/server/file.js"></script>
+
+
+</body>
+</html>

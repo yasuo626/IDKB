@@ -1,0 +1,10 @@
+ApiUrl.aiproxy.apikey: sk-xVFfhXvnpu4k9VUgKiVS8FS2ODytKG8eqWxS4hBOmgK8o6Vv
+ApiUrl.aiproxy.url: https://api.aiproxy.io/v1
+ApiUrl.local.apikey: ''
+ApiUrl.local.url: http://e6x3fb.natappfree.cc/v1/chat/completions
+ApiUrl.test.apikey: ''
+ApiUrl.test.url: ''
+Milvus.host: 127.0.0.1
+Milvus.port: 19530
+NodeState: 0
+NodeUrl: http://127.0.0.1:8001/idkbapi

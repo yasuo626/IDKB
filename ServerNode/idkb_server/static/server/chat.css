@@ -1,0 +1,1110 @@
+
+
+
+
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+
+
+.main{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: scroll;
+}
+
+.main::-webkit-scrollbar{
+    width: 0;
+    height: 0;
+}
+
+
+.header{
+     /*layout*/
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 40px;
+
+    /*box*/
+    /*margin: auto;*/
+    /*padding: unset;*/
+    background-color: #4A4A4A;
+    z-index: 0;
+}
+.main-container{
+     /*layout*/
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+
+    /*box*/
+    z-index: 0;
+}
+.footer{
+     /*layout*/
+    /*display: flex;*/
+    /*align-items: flex-end;*/
+    /*margin-top: auto;*/
+    /*flex-direction: row;*/
+    width: 100%;
+    height: 200px;
+
+    /*box*/
+    background-color: #242424;
+    box-shadow: 0 -2px 2px rgba(0, 0, 0, 0.5);
+    z-index: 0;
+}
+
+.separator {
+    border-top: 1px solid black;
+}
+.separator::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: white;
+}
+.empty_block {
+  padding: 200px; /* 设置空白块的内边距 */
+}
+
+
+
+
+
+
+
+.top_site_bar{
+    /*layout*/
+    display: flex;
+    flex-direction: row;
+
+    width: 100%;
+    height: 90%;
+    top: auto;
+    bottom: auto;
+    margin-top: 0;
+
+    padding: unset;
+    border: #888888;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+
+    align-items: center;
+    z-index: 0;
+    /*transition: width 1s ease, transform 1s ease;*/
+}
+/*.top_site_bar:hover{*/
+/*    transform: translateY(50px);*/
+/*}*/
+.top_list_item{
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    top: 0;
+    left: 4%;
+    margin-left: 0;
+    margin-bottom: 0;
+}
+.top_empty_item{
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 50%;
+    top: 0;
+    left: 4%;
+    margin-left: 0;
+    margin-bottom: 0;
+}
+
+.top_list_item_element{
+ /*layout*/
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    top: 0;
+    overflow: scroll;
+    margin-right: 5px;
+    min-width: 60px;
+    /*box*/
+    /*margin-bottom: 10px;*/
+    /*    !*margin-left: 10px;*!*/
+    /*    padding: unset;*/
+    /*    border: #888888;*/
+    /*    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);*/
+    color:#ffffff;
+    /*content alien*/
+    align-items: center; /*垂直居中*/
+    justify-content: center; /*水平居中*/
+    white-space: nowrap; /*关闭自动换行*/
+    border-style: solid;
+    border-width: thin;
+    /*background-color: #FFFFFF;*/
+/
+    /*other style*/
+    /*    opacity: 0.7;*/
+    /*    z-index: 0;*/
+    /*    !*visibility: hidden; !*不可见*!*!*/
+    overflow-x: scroll;
+
+    /*    !*animation*!*/
+    /*    transition: width 1s ease, transform 1s ease;!*支持多个过度动画*!*/
+
+}
+.top_list_item_element:hover{
+    background-color: #F2FAFF;
+    cursor: pointer;
+}
+.top_list_item_element::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+
+.search_bar{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100%;
+    margin-left: 5px;
+    /*border-radius: 20px; !* 设置边框圆角 *!*/
+    /*border: 2px solid #8F8F8F; !* 设置边框颜色 *!*/
+}
+
+.search_input {
+    border-radius: 10px; /* 设置边框圆角 */
+    margin-right: 10px;
+    margin-top: auto;
+    align-items: center;
+    width: 150px; /* 设置搜索框宽度 */
+    height: 70%; /* 设置搜索框高度 */
+    padding: 5px; /* 设置搜索框内边距 */
+    font-size: 20px; /* 设置字体大小 */
+    color: white;
+    background: black;
+    /*border-color: black;*/
+}
+.search_input:focus{
+    width: 300px;
+}
+.search_button {
+    display: flex;
+    width: 40px;
+    height: 40px;
+    /* box */
+    /*margin-left: 5px;*/
+    /*margin-top: 10px;*/
+
+    padding: 0;
+    border: none;
+    border-radius: 10px;
+
+    /* content alignment */
+    align-items: center;
+    justify-content: center;
+
+    /* background */
+    background-image: url("../ico/query.svg");
+    background-size: cover;
+
+    /*other style*/
+    /*opacity: 0.7;*/
+    z-index: 0;
+    /*visibility: hidden; !*不可见*!*/
+    cursor: pointer;
+
+}
+.search_button:hover{
+    background-color: #F2FAFF;
+    cursor: pointer;
+}
+.search_button:active {
+    transform: scale(0.95);
+}
+
+.etc_button {
+    display: flex;
+    position: relative;
+    width: 40px;
+    height: 40px;
+    /* box */
+    margin-left: auto;
+    padding: 0;
+    border: none;
+    border-radius: 10px;
+
+    /* content alignment */
+    justify-content: center;
+
+    /* background */
+    background-image: url("../ico/etc.svg");
+    background-size: cover;
+
+    /*other style*/
+    /*opacity: 0.7;*/
+    z-index: 0;
+    /*visibility: hidden; !*不可见*!*/
+    cursor: pointer;
+
+}
+
+.etc_button:hover{
+    background-color: #F2FAFF;
+    cursor: pointer;
+}
+
+.top_button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 30px;
+    height: 30px;
+    /*border-radius: 50%;*/
+    text-align: center;
+    font-size: 24px;
+    line-height: 50px;
+    cursor: pointer;
+
+    /* background */
+    background-image: url("../ico/top.svg");
+    background-size: cover;
+    /*other style*/
+    /*opacity: 0.7;*/
+    z-index: 2;
+    /*visibility: hidden; !*不可见*!*/
+
+}
+
+.menu{
+    position: absolute;
+    right: 1px;
+    top: -5px; /* 相对于按钮的下方 */
+    width: 200px;
+    height: 300px;
+    /*background: #13c2c2;*/
+    /*display: none;*/
+    /* 其他样式 */
+    text-align: center;
+    background-color: #343434;
+    opacity: 1;
+}
+.menu_item{
+    display: flex;
+    flex-direction: row;
+    margin-top: 2px;
+    align-items: center;
+    height: 30px;
+    width: 100%;
+    background: #f0f0f0;
+    opacity: 1;
+    /*border-top:2px solid #ccc;*/
+}
+.menu_item_ico{
+    margin-left: 2px;
+    align-items: center;
+    height: 30px;
+    width: 30px;
+    /*background-image: url("../ico/user_blue.svg");*/
+    background-size: cover;
+}
+.menu_item_text{
+    margin-left: 5px;
+    font-size: 23px;
+}
+.menu_item:hover {
+    background-color: #DDDDDD;
+    cursor: pointer;
+}
+
+
+
+.div_block{
+    /*layout*/
+    display: flex;
+    flex-direction: row;
+
+    width: 100px;
+    height: 100px;
+    top: auto;
+    bottom: auto;
+    left: auto;
+    right: auto;
+
+    /*box*/
+    margin: auto;
+    padding: unset;
+    border: #888888;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+
+    /*content alien*/
+    align-items: center; /*垂直居中*/
+    justify-content: center; /*水平居中*/
+    overflow: hidden;
+    white-space: nowrap; /*关闭自动换行*/
+
+
+    /*background*/
+    background-color: #555555;
+    /*background-image: ;*/
+    /*background-size: cover;*/
+
+    /*font*/
+    font-size: small;
+    color: #4987; /*字体颜色*/
+    text-align: center;
+
+    /*other style*/
+    opacity: 0.7;
+    z-index: 0;
+    /*visibility: hidden; !*不可见*!*/
+
+    /*animation*/
+    transition: width 1s ease, transform 1s ease;/*支持多个过度动画*/
+}
+.div_block:hover {
+    background-color: #b3d4fc;
+}
+
+
+
+.fullscreen_shadow {
+    /* 定位到整个屏幕 */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    /* 暗影效果：半透明黑色 */
+    background-color: rgba(0, 0, 0, 0.5);
+
+    /* 确保遮罩层在最上层 */
+    z-index: 2;
+
+    /* 阻止与下层元素的交互 */
+    pointer-events: auto;
+}
+
+.absolute_container {
+    position: absolute;
+    height: 100%; /* 视口高度 */
+    width: 100%;
+    z-index: 3;
+}
+
+.login_form{
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    margin: 100px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.login_input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+.login_button {
+    width: 100%;
+    margin-top: 10px;
+    padding: 8px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.login_response{
+    display: flex;
+    flex-direction: row;
+}
+.login_loader {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    animation: spin 1s linear infinite;
+    display: none;
+}
+.login_response_msg{
+    display: none;
+}
+.login_register_link{
+
+}
+.password_link {
+    text-align: center;
+    margin-top: 10px;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
+
+
+
+
+.row_flex{
+    display: flex;
+    flex-direction: row;
+}
+.column_flex{
+    display: flex;
+    flex-direction: column;
+}
+
+.chat_list {
+    width: 24%;
+    height: 100vh;
+    background: #fff;
+    border-right: 2px solid #1c1c1c;
+    overflow-y: auto;
+}
+.chat_list ul{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+.chat_list li{
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border-bottom: 1px solid #ccc;
+}
+.chat_list_add{
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border-bottom: 1px solid #ccc;
+}
+.chat_list_add:hover{
+    background-color: #434457;
+    cursor: pointer;
+}
+
+.chat_list li:hover{
+    background-color: #434457;
+    cursor: pointer;
+}
+
+.chat_list_item {
+  padding: 10px;
+  border-bottom: 1px solid #d9d9d9;
+}
+.chat_list_add {
+  padding: 10px;
+  background-color: #e6e6e6;
+  text-align: center;
+}
+.chat_list li:hover {
+        background-color: #f0f0f0;
+}
+
+
+.chat_new_form_close{
+    position:relative;
+    background-image: url("../ico/close.svg");
+    background-size: cover;
+    border-radius: 50%;
+    left: 400px;
+    bottom: 40px; /* 相对于按钮的下方 */
+    width: 40px;
+    height: 40px;
+}
+.chat_new_form_close:hover{
+    background-color: #000000;
+    cursor: pointer;
+}
+.chat_new_form {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -10%);
+    width: 400px;
+    /*margin: 100px auto;*/
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #a39c9c;
+}
+.chat_new_form_options {
+    padding: 20px;
+    background-color: #f9f9f9;
+    margin-top: 10px;
+}
+.chat_new_form_options h2 {
+  color: #333;
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+select {
+  width: 100%;
+  padding: 5px;
+  font-size: 1em;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+select:focus {
+  outline: none;
+  border-color: #007bff;
+}
+.submit_button {
+ /*layout*/
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    top: 0;
+    font-size: large;
+    overflow: scroll;
+    margin-top: 5px;
+    margin-right: 5px;
+    min-width: 60px;
+    color:#4A4A4A;
+    align-items: center; /*垂直居中*/
+    justify-content: center; /*水平居中*/
+    white-space: nowrap; /*关闭自动换行*/
+    border-style: solid;
+    border-width: thin;
+    overflow-x: scroll;
+
+}
+.submit_button:hover{
+    background-color: #F2FAFF;
+    cursor: pointer;
+}
+.upload_response{
+    display: flex;
+    flex-direction: row;
+}
+.upload_loader {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    animation: spin 1s linear infinite;
+    display: none;
+}
+.upload_response_msg{
+    display: none;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
+
+
+
+
+
+
+.chat_settings{
+    /*layout*/
+    display: flex;
+    flex-direction: row;
+
+    width: 100%;
+    height: 40px;
+
+    padding: unset;
+    border: #888888;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+
+    align-items: center;
+    z-index: 0;
+}
+.chat_settings_option{
+ /*layout*/
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    top: 0;
+    overflow: scroll;
+    margin-right: 5px;
+    min-width: 60px;
+    /*box*/
+    /*margin-bottom: 10px;*/
+    /*    !*margin-left: 10px;*!*/
+    /*    padding: unset;*/
+    /*    border: #888888;*/
+    /*    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);*/
+    color:#4A4A4A;
+
+    /*content alien*/
+    align-items: center; /*垂直居中*/
+    justify-content: center; /*水平居中*/
+    white-space: nowrap; /*关闭自动换行*/
+    border-style: solid;
+    border-width: thin;
+    /*background-color: #FFFFFF;*/
+/
+    /*other style*/
+    /*    opacity: 0.7;*/
+    /*    z-index: 0;*/
+    /*    !*visibility: hidden; !*不可见*!*!*/
+    overflow-x: scroll;
+}
+.chat_settings_option:hover{
+    background-color: #F2FAFF;
+    cursor: pointer;
+}
+
+.chat_container {
+  width: 70%;
+  float: right;
+}
+.chat_setting {
+  padding: 10px;
+  background-color: #f2f2f2;
+  border-bottom: 1px solid #d9d9d9;
+}
+.chat_box {
+  padding: 10px;
+  min-height: 200px;
+  border-bottom: 1px solid #d9d9d9;
+  background-color: #ffffff;
+}
+.chat_message_user {
+  margin-bottom: 10px;
+}
+.chat_message_assistant {
+  margin-bottom: 10px;
+  background-color: #f2f2f2;
+  padding: 5px;
+}
+.chat_message_setting {
+  margin-bottom: 10px;
+  background-color: #f2f2f2;
+  padding: 5px;
+}
+.chat_message_system {
+  margin-bottom: 10px;
+  background-color: #f2f2f2;
+  padding: 5px;
+}
+.chat_options {
+  padding: 10px;
+  background-color: #f2f2f2;
+}
+.chat_options_input {
+  margin-bottom: 10px;
+}
+.chat_options_item {
+  padding: 5px;
+  background-color: #e6e6e6;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.chat_block{
+    /*layout*/
+    display: flex;
+    flex-direction: column;
+    /*resize: horizontal;*/
+    width: 95%;
+    height: 70vh;
+    top: auto;
+    bottom: auto;
+    left: auto;
+    right: auto;
+    overflow-y: scroll;
+    /*box*/
+    border: #888888;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    /*!*content alien*!*/
+    align-items: center; /*垂直居中*/
+    background: #EEEEEE;
+    /*background: #212B36;*/
+}
+.chat_block::-webkit-scrollbar {
+  width: 5px;
+}
+.chat_block::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+.chat_block::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 5px;
+}
+
+.chat_agent_msg{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    right: 0;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: white;
+    z-index: 0;
+    overflow-wrap: normal;
+}
+.chat_agent_ico{
+    display: flex;
+    align-self: flex-start;
+    width: 30px;
+    height: 30px;
+    /* box */
+    margin-right: 10px;
+    padding: 1px;
+    border: none;
+    border-radius: 10px;
+    /* content alignment */
+    background-image: url("https://aidroid.top/static/ico/bot.svg");
+    background-size: cover;
+    /*opacity: 0.7;*/
+    z-index: 0;
+    /*visibility: hidden; !*不可见*!*/
+    cursor: pointer;
+}
+.chat_agent_content{
+    min-width: 10%;
+    max-width: 80%;
+    margin-left: 10px;
+
+    padding: 10px; /* 设置搜索框内边距 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    border-radius: 20px; /* 设置边框圆角 */
+    border: 2px solid #8F8F8F; /* 设置边框颜色 */
+    overflow-wrap: break-word;
+    font-size:15px;
+    font-weight: normal;
+    color: #000000; /*字体颜色*/
+    background: #e6e6e6;
+    /*other style*/
+    opacity: 0.7;
+    z-index: 0;
+}
+
+.chat_client_msg{
+    display: flex;
+    flex-direction: row-reverse;
+    width: 100%;
+    right: 0;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: white;
+    z-index: 0;
+    overflow-wrap: normal;
+}
+.chat_client_ico{
+    display: flex;
+    align-self: flex-end;
+    width: 30px;
+    height: 30px;
+    /* box */
+    margin-right: 10px;
+    padding: 1px;
+    border: none;
+    border-radius: 10px;
+    /* content alignment */
+    background-image: url("https://aidroid.top/static/ico/user_blue.svg");
+    background-size: cover;
+    /*opacity: 0.7;*/
+    z-index: 0;
+    /*visibility: hidden; !*不可见*!*/
+    cursor: pointer;
+
+}
+.chat_client_content{
+    min-width: 10%;
+    max-width: 80%;
+    margin-left: 10px;
+
+    padding: 10px; /* 设置搜索框内边距 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    border-radius: 20px; /* 设置边框圆角 */
+    border: 2px solid #8F8F8F; /* 设置边框颜色 */
+    /*content alien*/
+    /*text-align: center;*/
+    /*align-items: center; !*垂直居中*!*/
+    /*justify-content: center; !*水平居中*!*/
+    /*line-height: 100%;*/
+    overflow-wrap: break-word;
+
+    /*background*/
+    /*background-color: #555555;*/
+    /*background-image: ;*/
+    /*background-size: cover;*/
+    /*font*/
+    font-size:15px;
+    font-weight: normal;
+    color: #000000; /*字体颜色*/
+    background: #D1E9FC;
+    /*other style*/
+    opacity: 0.7;
+    z-index: 0;
+}
+
+.chat_info_msg{
+    /*display: flex;*/
+    /*flex-direction: row;*/
+    /*width: 100%;*/
+    /*right: 0;*/
+    /*margin-top: 10px;*/
+    /*margin-bottom: 10px;*/
+    /*z-index: 0;*/
+    overflow-wrap: normal;
+}
+.chat_info_ico{
+    /*display: flex;*/
+    /*align-self: flex-end;*/
+    /*width: 30px;*/
+    /*height: 30px;*/
+    /*!* box *!*/
+    /*margin-right: 10px;*/
+    /*padding: 1px;*/
+    /*border: none;*/
+    /*border-radius: 10px;*/
+    /*!* content alignment *!*/
+    /*background-image: url("https://aidroid.top/static/ico/user_blue.svg");*/
+    /*background-size: cover;*/
+    /*!*opacity: 0.7;*!*/
+    /*z-index: 0;*/
+    /*!*visibility: hidden; !*不可见*!*!*/
+    /*cursor: pointer;*/
+
+}
+.chat_info_content{
+    min-width: 10%;
+    max-width: 80%;
+    margin-left: 10px;
+
+    padding: 10px; /* 设置搜索框内边距 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    border-radius: 20px; /* 设置边框圆角 */
+    border: 2px solid #8F8F8F; /* 设置边框颜色 */
+    /*content alien*/
+    /*text-align: center;*/
+    /*align-items: center; !*垂直居中*!*/
+    /*justify-content: center; !*水平居中*!*/
+    /*line-height: 100%;*/
+    overflow-wrap: break-word;
+
+    /*background*/
+    /*background-color: #555555;*/
+    /*background-image: ;*/
+    /*background-size: cover;*/
+    /*font*/
+    font-size:15px;
+    font-weight: normal;
+    color: #BA2C2F;
+    background: #D1E9FC;
+    /*other style*/
+    opacity: 0.7;
+    z-index: 0;
+}
+
+.client_box {
+    /*layout*/
+    display: flex;
+    flex-direction: row;
+    /*resize: horizontal;*/
+    width: 95%;
+    height: 100px;
+    /*height: 1000px;*/
+    bottom: auto;
+    left: auto;
+    right: auto;
+    overflow-y: scroll;
+    /*box*/
+    border: #888888;
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.3);
+    background: #888888;
+    align-items: center; /*垂直居中*/
+}
+.client_input {
+    resize: none;
+    margin-left: 50px;
+    border-radius: 20px; /* 设置边框圆角 */
+    margin-right: 10px;
+    margin-top: 10px;
+    width: 50%; /* 设置搜索框宽度 */
+    min-width: 120px; /* 设置搜索框宽度 */
+    height: 60px; /* 设置搜索框高度 */
+    min-height: 50px; /* 设置搜索框高度 */
+    padding: 10px; /* 设置搜索框内边距 */
+    border: 2px solid #8F8F8F; /* 设置边框颜色 */
+
+    font-size: 20px; /* 设置字体大小 */
+    font-family: alimama;
+    font-weight: normal;
+    color: #000000;
+    background: #ffffff;
+}
+.client_func {
+    /*background: #4D95F8;*/
+    display: flex;
+    flex-direction: column;
+    width: 50px;
+    height: 60px;
+    /* box */
+    margin-right: 10px;
+    margin-top: 10px;
+    padding: 0;
+    border: none;
+    border-radius: 10px;
+    /* content alignment */
+    align-items: center;
+    justify-content: center;
+
+    /* background */
+    background-size: cover;
+    z-index: 0;
+    cursor: pointer;
+
+}
+.client_func_text{
+    /*!*layout*!*/
+    width: 100%;
+    height: 50%;
+    left: auto;
+    margin-bottom: -50px;
+    text-align: center;
+    align-items: center; /*垂直居中*/
+
+    /*!*background*!*/
+    /*!*background-image: ;*!*/
+    /*!*background-size: cover;*!*/
+
+    /*font*/
+    font-size:8px;
+    font-weight: bold;
+    color: #ffffff; /*字体颜色*/
+    opacity: 0.7;
+
+}
+.client_submit_but {
+    display: flex;
+    width: 50px;
+    height: 40px;
+    /* box */
+    margin-top: -40px;
+    padding: 0;
+    /* background */
+    background-image: url("https://aidroid.top/static/ico/send_right.svg");
+    background-size: cover;
+    border-radius: 3px;
+    /*border: 1px solid #e0e0e0;*/
+    /*other style*/
+    opacity: 1;
+    z-index: 0;
+    cursor: pointer;
+}
+.history_clear_but {
+    display: flex;
+    width: 50px;
+    height: 40px;
+    /* box */
+    margin-top: -40px;
+    padding: 0;
+    /* background */
+    background-image: url("https://aidroid.top/static/ico/time.svg");
+    background-size: cover;
+    border-radius: 3px;
+    /*border: 1px solid #e0e0e0;*/
+    /*other style*/
+    opacity: 1;
+    z-index: 0;
+    cursor: pointer;
+}
+.history_clear_but:active {
+  background-color: #ffffff;
+    transform: translateY(-1px);
+}
+
+
+
+
+
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 30px;
+}
+
+/* 开关滑块 */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+/* 开关滑块的样式 */
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+/* 切换到打开状态时的样式 */
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+
+
+
+
+
+
