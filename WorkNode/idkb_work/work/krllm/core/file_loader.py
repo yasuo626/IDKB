@@ -1,4 +1,3 @@
-
 from langchain.document_loaders import UnstructuredFileLoader,PDFMinerLoader,UnstructuredMarkdownLoader,\
     UnstructuredExcelLoader,\
     UnstructuredURLLoader,UnstructuredWordDocumentLoader,UnstructuredHTMLLoader
@@ -90,7 +89,6 @@ class FileLoader(LoggingObject):
 # 文件加载
 
 
-
 # 文本分割
 # from text_spliter import ChineseTextSplitter
 # from config import TEST_DOCS_DIR
@@ -99,7 +97,11 @@ class FileLoader(LoggingObject):
 # c=BertTextSplitter() # 每行切割 慢
 
 # pdf,docx,img,md,csv,txt,html,excel
-# python-docx exceptions #下载nltk_data 包放在环境下 openpyxl  pdf2image unstructured pdfminer.six(some problem in pdfminer ) cv2 unstructured_inference pikepdf pypdf unstructured_pytesseract
+#下载nltk_data 包放在环境下
+# python-docx exceptions  openpyxl  rapidocr_onnxruntime  pdf2image unstructured pdfminer.six opencv-python unstructured_inference pikepdf pypdf unstructured_pytesseract
+# pip install --upgrade --force-reinstall opencv-python-headless==4.8.0.76 
+
+
 # o=PDFMinerLoader(str((TEST_DOCS_DIR/'t.pdf').absolute()))
 # print(o.load())
 # o=UnstructuredWordDocumentLoader(str((TEST_DOCS_DIR/'t.docx').absolute()))

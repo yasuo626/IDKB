@@ -18,7 +18,7 @@ function api_request(formData, apiUrl, callback) {
 }
 
 var idkb_api_url=document.getElementById('api_url').innerText
-var local_url='http://127.0.0.1:8000'
+var local_url='https://idkb.aidroid.top'
 var home_url=local_url+'/idkb/'
 
 // 示例数据和 API 地址
@@ -328,23 +328,3 @@ function chat_chat(){
 }
 
 
-// create_msg('info','this is info',main_block);
-// create_msg('user','this is info',main_block);
-// create_msg('assistant','this is info',main_block);
-// create_msg('user','this is info',main_block);
-// create_msg('assistant','this is info',main_block);
-// create_msg('info','this is info',main_block);
-// create_msg('user','this is info',main_block);
-// create_msg('assistant','this is info',main_block);
-// create_msg('user','this is info',main_block);
-// create_msg('assistant','this is info',main_block);
-// create_msg('info','this is info',main_block);
-// create_msg('user','this is info',main_block);
-// create_msg('assistant','this is info',main_block);
-// create_msg('user','this is info',main_block);
-// create_msg('assistant','this is info',main_block);
-// create_msg('info','this is info',main_block);
-// create_msg('user','this is info',main_block);
-// create_msg('assistant','this is info',main_block);
-// create_msg('user','this is info',main_block);
-// create_msg('assistant','this is info',main_block);

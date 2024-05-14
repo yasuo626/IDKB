@@ -4,7 +4,7 @@
 
 
 function api_request(formData, apiUrl, callback) {
-
+    console.log(apiUrl)
     var xhr = new XMLHttpRequest();
     xhr.open('POST', apiUrl, true);
    xhr.onload = function() {
@@ -26,16 +26,16 @@ function api_request(formData, apiUrl, callback) {
 
 
 
-var api_url='http://127.0.0.1:8000'
+var api_url='https://idkb.aidroid.top'
 // 示例数据和 API 地址
 var api_user_login = api_url+'/wmc/apiuser';
 var api_user_logout = api_url+'/wmc/apiuser';
 var api_user_logoff = api_url+'/wmc/apiuser';
 var api_user = api_url+'/wmc/apiuser';
-var api_wmc_save_url= 'http://127.0.0.1:8000/wmc/save_url';
-var api_wmc_get_url= 'http://127.0.0.1:8000/wmc/get_module_url';
+var api_wmc_save_url= 'https://idkb.aidroid.top/wmc/save_url';
+var api_wmc_get_url= 'https://idkb.aidroid.top/wmc/get_module_url';
 
-var api_wmc_apiurl= 'http://127.0.0.1:8000/wmc/apiurl';
+var api_wmc_apiurl= 'https://idkb.aidroid.top/wmc/apiurl';
 
 var absolute_container=document.getElementById('absolute_container')
 
@@ -105,69 +105,18 @@ function login_required(){
 login_required()
 
 
-function set_url(){
-    document.getElementById('login_form').style.display='none';
-    document.getElementById('set_url_form').style.display='block';
-    absolute_container.style.display='block';
-}
-
-
-function response_set_url_submit(responsedata) {
-    // 在这里对响应数据进行处理
-    if(responsedata.state=='0'){
-        document.getElementById('set_url_response_msg').style.display='inline-block';
-        document.getElementById('set_url_response_msg').innerText="set success";
-        document.getElementById('set_url_loader').style.display = 'inline-block';
-        document.getElementById('set_url_response_msg').innerText="check url...";
-
-        var xhr = new XMLHttpRequest();
-        xhr.open('POST', document.getElementById('set_url_form_url').value+"/krdroid/api_check", true);
-        xhr.onload = function() {
-            if (xhr.status === 200) {
-                var jsonResponse = JSON.parse(xhr.responseText);
-                document.getElementById('set_url_loader').style.display = 'none';
-                document.getElementById('set_url_response_msg').innerText="check success";
-                setTimeout(() => {
-                    document.getElementById('set_url_form').style.display='none';
-                    document.getElementById('absolute_container').style.display='none';
-                    location.reload();
-                }, 1000);
-
-            } else {
-                document.getElementById('set_url_loader').style.display = 'none';
-                document.getElementById('set_url_response_msg').innerText="check failed";
-            }
-        };
-        xhr.send(new FormData());
-
-
-    }else{
-        document.getElementById('set_url_response_msg').style.display='inline-block';
-        document.getElementById('set_url_response_msg').innerText=`${responsedata.error_info}`;
-        document.getElementById('set_url_loader').style.display = 'none';
-    }
-}
-
-function set_url_submit(){
-    var url=document.getElementById('set_url_form_url').value;
-    var formdata=new FormData();
-    formdata.append('method','set');
-    formdata.append('url',url);
-
-
-
-    api_request(formdata,api_wmc_apiurl,response_set_url_submit);
-}
+Module_state_idkb=document.getElementById("Module_state_idkb");
 
 function response_check_module_idkb_save_url(responsedata){
     if(responsedata.state=='0'){
-            document.getElementById('Module_state_idkb').style.backgroundColor='#52c41a';}
+        Module_state_idkb.style.backgroundColor='#52c41a';}
     else{
-        document.getElementById('Module_state_idkb').style.backgroundColor='#ffd666';
+        Module_state_idkb.style.backgroundColor='#ffd666';
         alert("save api url error");
     }
 
 }
+// 判断api状态并显示
 function response_check_module_idkb(responsedata){
     if(responsedata.state=='0'){
         var formdata = new FormData();
@@ -175,15 +124,17 @@ function response_check_module_idkb(responsedata){
         formdata.append('url',document.getElementById('module_idkb_url').value)
         api_request(formdata,api_wmc_save_url,response_check_module_idkb_save_url);
     }else if(responsedata.state=='1'){
-        document.getElementById('Module_state_idkb').style.backgroundColor='#f5222d';
+        Module_state_idkb.style.backgroundColor='#f5222d';
     }else if(responsedata.state=='2'){
-        document.getElementById('Module_state_idkb').style.backgroundColor='#a39c9c';
+        Module_state_idkb.style.backgroundColor='#a39c9c';
     }
     else{
-        document.getElementById('Module_state_idkb').style.backgroundColor='#ffd666';
+        Module_state_idkb.style.backgroundColor='#ffd666';
         alert("idkb api url error");
     }
 }
+
+
 function clear_list(list){
     while (list.firstChild) {
       list.removeChild(list.firstChild);
@@ -209,6 +160,7 @@ function module_get_args(module_name,args){
         list.appendChild(li);
     }
 }
+// 获取api的控制参数
 function response_get_args(responsedata){
         // 在这里对响应数据进行处理
     if(responsedata.state=='0'){
@@ -217,10 +169,12 @@ function response_get_args(responsedata){
 
     }
 }
+
+// 检查idkb api状态
 function check_module_idkb(){
     url=document.getElementById(`module_idkb_url`).value;
     var formdata = new FormData();
-    formdata.append('method','check');
+    formdata.append('systemctl_method','check');
 
     var xhr = new XMLHttpRequest();
     xhr.open('POST', url+'/module_control', true);
@@ -244,11 +198,9 @@ function check_module_idkb(){
     xhr.send(formdata);
 
     formdata = new FormData();
-    formdata.append('method','get_args');
+    formdata.append('systemctl_method','get_args');
     console.log(formdata)
     api_request(formdata, url+'/module_control',response_get_args);
-
-
 }
 
 
@@ -259,7 +211,7 @@ function response_activate_idkb(responsedata){
 function activate_idkb(){
     url=document.getElementById('module_idkb_url').value;
     var formdata = new FormData();
-    formdata.append('method','activate');
+    formdata.append('systemctl_method','activate');
     api_request(formdata,url+'/module_control',response_activate_idkb);
 }
 function response_deactivate_idkb(responsedata){
@@ -268,7 +220,7 @@ function response_deactivate_idkb(responsedata){
 function deactivate_idkb(){
     url=document.getElementById('module_idkb_url').value;
     var formdata = new FormData();
-    formdata.append('method','deactivate');
+    formdata.append('systemctl_method','deactivate');
     api_request(formdata,url+'/module_control',response_deactivate_idkb);
 
 }
@@ -284,7 +236,7 @@ function update_args(module_name){
     var list=document.getElementById(`Module_idkb_args`);
     var children = list.children;
     var formdata=new FormData();
-    formdata.append('method','set_args');
+    formdata.append('systemctl_method','set_args');
     for (var i = 0; i < children.length; i++) {
         var item= children[i];
         formdata.append(`${item.firstChild.innerText}`,item.lastChild.value);
@@ -294,17 +246,16 @@ function update_args(module_name){
 
 function response_reboot(responsedata){
     if(responsedata.state=='0'){
-        alert("waiting...");
-        document.location.reload();
     }else{
         alert(`${responseData.error_info}`);
     }
 }
 function reboot(){
     var formdata=new FormData();
-    formdata.append('method','reboot');
-
+    formdata.append('systemctl_method','reboot');
     api_request(formdata,url+'/module_control',response_reboot);
+    alert("waiting...");
+    document.location.reload();
 }
 
 

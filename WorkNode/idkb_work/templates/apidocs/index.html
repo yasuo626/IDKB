@@ -412,10 +412,10 @@ response:
 
 <H1>wmc</H1>
 
-<H2>idkb</H2>
+<H2>idkb.module_control</H2>
 requests:
 {
-    'method':'check',
+    'systemctl_method':'check',
 }
 response:
 {
@@ -426,7 +426,7 @@ response:
 
 requests:
 {
-    'method':'get_args',
+    'systemctl_method':'get_args',
 }
 response:
 {
@@ -440,7 +440,7 @@ response:
 
 requests:
 {
-    'method':'set_args',
+    'systemctl_method':'set_args',
     'args':{
         'key1':'value1',
         ...
@@ -454,7 +454,7 @@ response:
 
 requests:
 {
-    'method':'activate',
+    'systemctl_method':'activate',
 }
 response:
 {
@@ -464,7 +464,7 @@ response:
 
 requests:
 {
-    'method':'deactivate',
+    'systemctl_method':'deactivate',
 }
 response:
 {
@@ -474,7 +474,7 @@ response:
 
 requests:
 {
-    'method':'reboot',
+    'systemctl_method':'reboot',
 }
 response:
 {

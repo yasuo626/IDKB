@@ -462,7 +462,7 @@ html, body {
     top: 30%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 400px;
+    width: min(70%, 400px);
     margin: 100px auto;
     padding: 20px;
     border-radius: 5px;
@@ -492,7 +492,7 @@ html, body {
     background-image: url("../ico/close.svg");
     background-size: cover;
     border-radius: 50%;
-    left: 400px;
+    left: 100%;
     bottom: 40px; /* 相对于按钮的下方 */
     width: 40px;
     height: 40px;
@@ -506,7 +506,7 @@ html, body {
     top: 20%;
     left: 50%;
     transform: translate(-50%, -10%);
-    width: 400px;
+    width: min(70%, 400px);
     /*margin: 100px auto;*/
     padding: 20px;
     border-radius: 5px;
@@ -592,7 +592,7 @@ select:focus {
     background-image: url("../ico/close.svg");
     background-size: cover;
     border-radius: 50%;
-    left: 400px;
+    left: 100%;
     bottom: 40px; /* 相对于按钮的下方 */
     width: 40px;
     height: 40px;
@@ -606,7 +606,7 @@ select:focus {
     top: 20%;
     left: 50%;
     transform: translate(-50%, -10%);
-    width: 400px;
+    width: min(70%, 400px);
     margin: 100px auto;
     padding: 20px;
     border-radius: 5px;
@@ -616,6 +616,8 @@ select:focus {
 .kb_delete_list {
     list-style-type: none; /* 移除默认的列表项目符号 */
     padding: 0; /* 移除默认的内边距 */
+    height: 100px;
+    overflow-y: scroll;
 }
 .kb_delete_list li {
     display: flex;
@@ -635,7 +637,7 @@ select:focus {
     background-image: url("../ico/close.svg");
     background-size: cover;
     border-radius: 50%;
-    left: 400px;
+    left: 100%;
     bottom: 40px; /* 相对于按钮的下方 */
     width: 40px;
     height: 40px;
@@ -649,7 +651,7 @@ select:focus {
     top: 20%;
     left: 50%;
     transform: translate(-50%, -10%);
-    width: 400px;
+    width: min(70%, 400px);
     margin: 100px auto;
     padding: 20px;
     border-radius: 5px;
@@ -659,6 +661,8 @@ select:focus {
 .kb_files_list {
     list-style-type: none; /* 移除默认的列表项目符号 */
     padding: 0; /* 移除默认的内边距 */
+    height: 100px;
+    overflow-y: scroll;
 }
 .kb_files_list li {
     display: flex;

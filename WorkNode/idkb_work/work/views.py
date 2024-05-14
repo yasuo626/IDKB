@@ -20,16 +20,29 @@ from .krllm.core.chat import Chat,Message,get_query_format
 config=YamlConfig(str(BASE_DIR/'work/config.yaml'))
 
 
+import re
+def is_numeric(s):
+    return bool(re.match(r'^\d+$', s))
+
 def file_to_name_type(file_name):
     x=file_name.split('.')
     return ''.join(x[:-1]),x[-1]
 
 def set_config_args(args:dict):
     config.update(args)
-    config.save()
 
 def get_NodeState():
     return config.args['NodeState']
+
+def api_state_response(response):
+    state=get_NodeState()
+    response["state"]=1
+    if state==1:
+        response["error_info"]=f"application is not activate"
+    if state==2:
+        response["error_info"]=f"application is under maintenance"
+    return response
+
 
 import os,sys
 def module_reboot():
@@ -45,7 +58,7 @@ def file_to_uploads(username,file,file_path, support_file_types, max_file_size):
             destination.write(chunk)
     return True
 
-def file_get(request):
+def file_get(request):# 用户所有文件列表获取
     if request.method == "GET":
         return redirect('../apidocs/')
 
@@ -53,9 +66,7 @@ def file_get(request):
     if request.method == "POST":
 
         if get_NodeState()!=0:
-            response["state"]=1
-            response["error_info"]=f"application is not activate"
-            return JsonResponse(response)
+            return JsonResponse(api_state_response(response))
 
         username = request.POST.get('username')
         files=[]
@@ -67,16 +78,14 @@ def file_get(request):
     response["error_info"]=f"request method {request.method}!=POST"
     return JsonResponse(response)
 
-def file_get_detail(request):
+def file_get_detail(request):# 文件详细信息获取
     if request.method == "GET":
         return redirect('../apidocs/')
 
     response={"state":0,"error_info":""}
     if request.method == "POST":
         if get_NodeState()!=0:
-            response["state"]=1
-            response["error_info"]=f"application is not activate"
-            return JsonResponse(response)
+            return JsonResponse(api_state_response(response))
 
         username = request.POST.get('username')
         filename = request.POST.get('filename')
@@ -94,17 +103,47 @@ def file_get_detail(request):
     response["error_info"]=f"request method {request.method}!=POST"
     return JsonResponse(response)
 
-def file_upload(request):
+# def rename_url(url):
+# 	url = re.sub(r'^https?:\/\/(www\.)?', '', url) # 删除 http://, https://
+# 	url = re.sub(r'\.html$', '', url) # 删除结尾的.html
+# 	url = re.sub(r'\W', '_', url) # 替换所有非字母和数字的字符为下划线
+# 	return url + '.html' # 添加.html到结尾
+# import requests
+
+# header = {
+#         'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+#         'Accept-Language': 'zh-cn',
+#         'Connection': 'keep-alive',
+#         'Host': 'www.baidu.com',
+#         'Referer': 'https://www.baidu.com/',
+#         'Cookie': 'uuid_tt_dd=10_35489889920-1563497330616-876822;',
+#         'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/605.1.15 (KHTML, like Gecko) '
+#                       'Version/14.0.2 Safari/605.1.15'}
+# def fetch_links(links,upload_dir):
+#     fetched={}
+#     for link in links:
+#         fetched[rename_url(link)]={}
+#         try:
+#             response=requests.get(link,headers=header).text
+#             name=rename_url(link)
+#             fetched[rename_url(link)]['']={}
+#             with open(filename, 'wb') as f:
+#                 f.write(response)
+#         response = requests.get(url)
+
+def file_upload(request):# 文件上传
     if request.method == "GET":
         return redirect('../apidocs/')
 
     response={"state":0,"error_info":""}
     if request.method == "POST":
         if get_NodeState()!=0:
-            response["state"]=1
-            response["error_info"]=f"application is not activate"
-            return JsonResponse(response)
+            return JsonResponse(api_state_response(response))
 
+        # fetching links
+        links=re.split(r'\s+', request.POST.get('links'))
+        
+        
         username = request.POST.get('username')
         form = FileUploadForm(request.POST, request.FILES)
         files = request.FILES.getlist('files')
@@ -162,16 +201,14 @@ def file_upload(request):
     response["error_info"]=f"request method {request.method}!=POST"
     return JsonResponse(response)
 
-def file_delete(request):
+def file_delete(request):# 文件删除
     if request.method == "GET":
         return redirect('../apidocs/')
 
     response={"state":0,"error_info":""}
     if request.method == "POST":
         if get_NodeState()!=0:
-            response["state"]=1
-            response["error_info"]=f"application is not activate"
-            return JsonResponse(response)
+            return JsonResponse(api_state_response(response))
 
         username = request.POST.get('username')
         file_names = request.POST.getlist('files')
@@ -214,16 +251,14 @@ def file_delete(request):
     response["error_info"]=f"request method {request.method}!=POST"
     return JsonResponse(response)
 
-def kb_get(request):
+def kb_get(request):#知识库获取
     if request.method == "GET":
         return redirect('../apidocs/')
 
     response={"state":0,"error_info":""}
     if request.method == "POST":
         if get_NodeState()!=0:
-            response["state"]=1
-            response["error_info"]=f"application is not activate"
-            return JsonResponse(response)
+            return JsonResponse(api_state_response(response))
 
         username = request.POST.get('username')
         kbobjs=KnowledgeBase.objects.filter(user_name=username)
@@ -234,16 +269,14 @@ def kb_get(request):
     response["error_info"]=f"request method {request.method}!=POST"
     return JsonResponse(response)
 
-def kb_get_detail(request):
+def kb_get_detail(request):#知识库详细信息获取
     if request.method == "GET":
         return redirect('../apidocs/')
 
     response={"state":0,"error_info":""}
     if request.method == "POST":
         if get_NodeState()!=0:
-            response["state"]=1
-            response["error_info"]=f"application is not activate"
-            return JsonResponse(response)
+            return JsonResponse(api_state_response(response))
 
         kbname = request.POST.get('kbname')
         username = request.POST.get('username')
@@ -259,16 +292,14 @@ def kb_get_detail(request):
     response["error_info"]=f"request method {request.method}!=POST"
     return JsonResponse(response)
 
-def kb_create(request):
+def kb_create(request):#知识库创建
     if request.method == "GET":
         return redirect('../apidocs/')
 
     response={"state":0,"error_info":""}
     if request.method == "POST":
         if get_NodeState()!=0:
-            response["state"]=1
-            response["error_info"]=f"application is not activate"
-            return JsonResponse(response)
+            return JsonResponse(api_state_response(response))
 
         username = request.POST.get('username')
         kbname = request.POST.get('kbname')
@@ -305,16 +336,14 @@ def kb_create(request):
     response["error_info"]=f"request method {request.method}!=POST"
     return JsonResponse(response)
 
-def kb_delete(request):
+def kb_delete(request):#知识库删除
     if request.method == "GET":
         return redirect('../apidocs/')
 
     response={"state":0,"error_info":""}
     if request.method == "POST":
         if get_NodeState()!=0:
-            response["state"]=1
-            response["error_info"]=f"application is not activate"
-            return JsonResponse(response)
+            return JsonResponse(api_state_response(response))
 
         username = request.POST.get('username')
         kbname = request.POST.get('kbname')
@@ -337,16 +366,14 @@ def kb_delete(request):
     response["error_info"]=f"request method {request.method}!=POST"
     return JsonResponse(response)
 
-def kb_get_valid_files(request):
+def kb_get_valid_files(request):#知识库
     if request.method == "GET":
         return redirect('../apidocs/')
 
     response={"state":0,"error_info":""}
     if request.method == "POST":
         if get_NodeState()!=0:
-            response["state"]=1
-            response["error_info"]=f"application is not activate"
-            return JsonResponse(response)
+            return JsonResponse(api_state_response(response))
 
         username = request.POST.get('username')
         kbname = request.POST.get('kbname')
@@ -385,9 +412,7 @@ def kb_get_files(request):
     response={"state":0,"error_info":""}
     if request.method == "POST":
         if get_NodeState()!=0:
-            response["state"]=1
-            response["error_info"]=f"application is not activate"
-            return JsonResponse(response)
+            return JsonResponse(api_state_response(response))
 
         username = request.POST.get('username')
         kbname = request.POST.get('kbname')
@@ -416,9 +441,7 @@ def kb_add_files(request):
     response={"state":0,"error_info":""}
     if request.method == "POST":
         if get_NodeState()!=0:
-            response["state"]=1
-            response["error_info"]=f"application is not activate"
-            return JsonResponse(response)
+            return JsonResponse(api_state_response(response))
 
         username = request.POST.get('username')
         kbname = request.POST.get('kbname')
@@ -489,9 +512,7 @@ def kb_drop_files(request):
     response={"state":0,"error_info":""}
     if request.method == "POST":
         if get_NodeState()!=0:
-            response["state"]=1
-            response["error_info"]=f"application is not activate"
-            return JsonResponse(response)
+            return JsonResponse(api_state_response(response))
 
         username = request.POST.get('username')
         kbname = request.POST.get('kbname')
@@ -565,10 +586,7 @@ def chat(request):
     response={"state":0,"error_info":""}
     if request.method == "POST":
         if get_NodeState()!=0:
-            response["state"]=1
-            response["error_info"]=f"application is not activate"
-            return JsonResponse(response)
-
+            return JsonResponse(api_state_response(response))
         method= request.POST.get('method')
         if method == "get":
             username = request.POST.get('username')
@@ -694,9 +712,7 @@ def chat(request):
     return JsonResponse(response)
 
 
-import re
-def is_numeric(s):
-    return bool(re.match(r'^\d+$', s))
+
 
 def module_control(request):
     if request.method == "GET":
@@ -704,7 +720,7 @@ def module_control(request):
 
     response={"state":0,"error_info":""}
     if request.method == "POST":
-        method= request.POST.get('method')
+        method= request.POST.get('systemctl_method')
         if method == "check":
             response['state']=config.args['NodeState']
             return JsonResponse(response)
@@ -718,15 +734,13 @@ def module_control(request):
                     new_args[key] = request.POST.get(key)
                     if is_numeric(new_args[key]):
                         new_args[key]=int(new_args[key])
-            set_config_args(new_args)
+            config.args=new_args
             return JsonResponse(response)
         elif method == "activate":
             config.args['NodeState']=0
-            set_config_args(config.args)
             return JsonResponse(response)
         elif method == "deactivate":
             config.args['NodeState']=1
-            set_config_args(config.args)
             return JsonResponse(response)
         elif method == "reboot":
             config.args['NodeState']=2

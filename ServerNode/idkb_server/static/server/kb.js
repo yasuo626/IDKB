@@ -18,7 +18,7 @@ function api_request(formData, apiUrl, callback) {
 }
 
 var idkb_api_url=document.getElementById('api_url').innerText
-var local_url='http://127.0.0.1:8000'
+var local_url='https://idkb.aidroid.top'
 var home_url=local_url+'/idkb/'
 
 // 示例数据和 API 地址
@@ -117,7 +117,7 @@ function kb_add_li(name,api,llm,embedding_model){
     kb_list.appendChild(kb_li);
 
     kb_li.addEventListener("click", function(event) {
-        var kbname=event.target.id;
+        var kbname=event.currentTarget.id;
         current_kb_name=kbname;
         var username=document.getElementById('get_username').innerText;
         var formdata = new FormData();

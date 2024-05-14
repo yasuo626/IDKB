@@ -9,32 +9,42 @@
 <body>
 <div class="top_button" id="top_button"></div>
 
+
+
 <div class="main">
+
+
+
     <div class="header" >
-    <div class="top_site_bar">
-        <div class="top_list_item">
-            <div class="top_list_item_element" id="home" onclick="window.location.href='/idkb/'">home</div>
-        </div>
-        <div class="top_list_item">
-            <div class="top_list_item_element" id="kb">knowledge base</div>
-        </div>
-        <div class="top_list_item">
-            <div class="top_list_item_element" id="file" onclick="window.location.href='/idkb/file'">file</div>
-        </div>
-        <div class="top_list_item">
-            <div class="top_list_item_element" id="chat" onclick="window.location.href='/idkb/chat'">chat</div>
-        </div>
-        <div class="top_empty_item"></div>
-        <div class="search_bar">
-            <input class="search_input" id="search_input">
-            <div class="search_button" id="search_button"></div>
-        </div>
-        <div class="etc_button" id="etc_button" onclick="show_etc_menu()">
+        <div class="top_site_bar">
+            <div class="top_list_item">
+                <div class="top_list_item_element" id="home" onclick="window.location.href='/idkb/'">home</div>
+            </div>
+            <div class="top_list_item">
+                <div class="top_list_item_element" id="kb">knowledge base</div>
+            </div>
+            <div class="top_list_item">
+                <div class="top_list_item_element" id="file" onclick="window.location.href='/idkb/file'">file</div>
+            </div>
+            <div class="top_list_item">
+                <div class="top_list_item_element" id="chat" onclick="window.location.href='/idkb/chat'">chat</div>
+            </div>
+            <div class="top_empty_item"></div>
+            <div class="search_bar">
+                <input class="search_input" id="search_input">
+                <div class="search_button" id="search_button"></div>
+            </div>
+            <div class="etc_button" id="etc_button" onclick="show_etc_menu()"></div>
         </div>
     </div>
 
-    </div>
+
+
     <div class="separator"></div>
+
+
+
+
     <div class="main-container" id="main_container">
         <div class="actions">
             <div class="actions_item"><div class="actions_item_element" onclick="kb_create()">create kb</div></div>
@@ -62,7 +72,7 @@
             </div>
 
             <div class="kb_files_operate_form" id="kb_files_operate_form" style="display: none">
-                <div class="kb_detail_close" id="kb_files_operate_close" onclick="kb_files_operate_close()"></div>
+                <div class="kb_detail_close" onclick="kb_files_operate_close()"></div>
                 <ul class="kb_files_list" id="kb_files_list"></ul>
                 <div class="submit_button" onclick="kb_files_add()">add files</div>
                 <div class="submit_button" onclick="kb_files_drop()">drop files</div>
@@ -73,13 +83,12 @@
                 <ul class="kb_files_list" id="kb_files_add_list"></ul>
                 <div class="submit_button" id="kb_files_add_submit_but" onclick="kb_files_add_submit()">add</div>
             </div>
+            
             <div class="kb_files_operate_form" id="kb_files_drop_form" style="display: none">
                 <div class="kb_detail_close" onclick="kb_files_drop_close()"></div>
                 <ul class="kb_files_list" id="kb_files_drop_list"></ul>
                 <div class="submit_button" id="kb_files_drop_submit_but" onclick="kb_files_drop_submit()">drop</div>
             </div>
-
-
 
             <div class="menu" id="etc_menu" style="display: none">
                 <div class="menu_item"  onclick="logout()"><div class="menu_item_text">logout</div></div>
@@ -114,7 +123,6 @@
                       </select>
                     <div class="submit_button" onclick="kb_create_submit()">create</div>
                     <div class="upload_response" ><div class="upload_loader" id="create_loader" style="display: none;"></div> <p class="upload_response_msg" id="create_response_msg"></p></div>
-
                 </div>
             </div>
 
@@ -123,34 +131,31 @@
                 <div class="kb_delete_list" id="kb_delete_list">
                 </div>
                 <div class="submit_button" onclick="kb_delete_submit()">delete</div>
-<!--                <div class="submit_button" onclick="kb_delete_select_all()" id="kb_delete_select_all">select all</div>-->
             </div>
-
-
-
         </div>
 
+        <div class="empty_block"></div>
+        
+        <div class="separator"></div>
+        
+        <div class="footer"></div>
+
+        <div id="require_login" style="display: none">{{require_login}}</div>
+        <div id="is_login" style="display: none">{{is_login}}</div>
+        <div id="get_username" style="display: none">{{username}}</div>
+        <div id="api_url" style="display: none">{{apiurl}}</div>
     </div>
-    <div class="empty_block"></div>
-    <div class="separator"></div>
-    <div class="footer"></div>
-
-
-
-
-
-
-    <div id="require_login" style="display: none">{{require_login}}</div>
-    <div id="is_login" style="display: none">{{is_login}}</div>
-    <div id="get_username" style="display: none">{{username}}</div>
-    <div id="api_url" style="display: none">{{apiurl}}</div>
-
 </div>
 
 
 
-<script src="../static/server/kb.js"></script>
 
+
+
+
+
+
+<script src="../static/server/kb.js"></script>
 
 </body>
 </html>

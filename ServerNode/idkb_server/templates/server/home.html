@@ -39,18 +39,13 @@
     </div>
     <div class="separator"></div>
     <div class="main-container" id="main_container">
-        <H2>项目介绍</H2>
-        <p>本demo是利用语言模型和向量数据库实现的一个知识召回语言模型。现有的语言模型虽然知识广泛，
-功能强大，但是缺乏在特定环境下应用的相关知识，导致其应用范围局限于聊天对话。
-我们提出的KR-LLM能够以文件的形式将知识存储，并通过向量查询的方式实现知识检索，以实现语言模型的记忆存储和查找，
-从而让LLM能够在特定场景、需要专业知识的条件下，完成指定任务。</p>
 
-        <H2>使用教程</H2>
-        <p>1.上传文件: 在file文件管理页面，上传文件</p>
-        <p>2.创建知识库:在kb页面创建知识库，选择语言模型，嵌入模型等参数</p>
-        <p>3.知识库文件管理: 点击其中的知识库，选择文件操作，可以查看、添加、删除文件，注意知识库只能加载api和model相同的文件</p>
-        <p>4.创建对话： 选择指定知识库创建对话，并设置模型的任务角色模板和其它参数</p>
-        <p>5.对话： 发送消息开始聊天，可以选择是否使用知识库</p>
+        
+
+
+
+        <div id="markdown-content"></div>
+
     </div>
     <div class="empty_block"></div>
     <div class="separator"></div>
@@ -87,10 +82,14 @@
 
 </div>
 
+<script src="https://cdn.staticfile.net/marked-highlight/2.1.0/index.umd.min.js"></script>
 
 
+<script src="https://cdn.staticfile.net/marked/11.1.1/marked.min.js"></script>
+<script>
+    document.getElementById('markdown-content').innerHTML =
+      marked.parse('## 使用教程\n  1.上传文件: 在file文件管理页面，上传文件\n  2.创建知识库:在kb页面创建知识库，选择语言模型，嵌入模型等参数\n 3.知识库文件管理: 点击其中的知识库，选择文件操作，可以查看、添加、删除文件，注意知识库只能加载api和model相同的文件\n 4.创建对话： 选择指定知识库创建对话，并设置模型的任务角色模板和其它参数\n 5.对话： 发送消息开始聊天，可以选择是否使用知识库\n ');
+</script>
 <script src="../static/server/home.js"></script>
-
-
 </body>
 </html>
