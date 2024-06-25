@@ -3,6 +3,8 @@
 
 >[demo online](https://idkb.aidroid.top/idkb/)
 
+>[view our blog for implement details](https://blog.aidroid.top/ai/nlp/projects/idkb)
+
 
 > The development of machine customer service technology can provide society with professional customer service and help the development of enterprises. Although the language model continues to evolve and the model's text comprehension and generation capabilities have improved substantially, there is still a lack of expertise in multi-vertical domain tasks, and existing RAG techniques require fine-tuned training for the task resulting in the inability to use an external knowledge base for multiple tasks. We propose a retrieval-enhanced question-and-answer system (IDKB-QAS) with an independent dynamic knowledge base, which introduces an independent external knowledge base to realize dynamic knowledge base extension, eliminates the fine-tuning training of the knowledge base to satisfy multitasking requirements, and improves the accuracy of knowledge retrieval by improving the knowledge retrieval method. Meanwhile, we design a hierarchical knowledge storage retrieval module, HKSR, which reduces the storage and computation costs of the system's knowledge base and realizes an efficient management model for multi-user and multi-tasking. The performance in multi-vertical domain tasks has been significantly improved, realizing the ability to provide intelligent customer service under multi-tasks with complex knowledge requirements.
 
@@ -49,3 +51,21 @@ chatglm3-6b
 ## 对比
 
 ![alt text](compare.png)
+
+
+# icense
+This project is licensed under the license found in the LICENSE file in the root directory of this source tree. 
+
+
+# Reference
+If you find our work is useful in your research, please cite the following paper:
+```shell
+@article{IDKB-QAS,
+  title   = {IDKB-QAS：Independent Dynamic Knowledge-Based Retrieval Augmented Question-Answering Systems},
+  author  = {Yang Wang},
+  eprint={},
+  archivePrefix={arXiv},
+  primaryClass={},
+  year={2024}
+}
+```
